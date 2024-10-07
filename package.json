@@ -21,7 +21,7 @@
         "lib"
     ],
     "scripts": {
-        "build": "tsc && mkdir -p dist && cp -r src/* dist/",
+        "build": "tsx scripts/workflow/build-routes.ts",
         "build:docs": "tsx scripts/workflow/build-docs.ts",
         "dev": "cross-env NODE_ENV=dev tsx watch --clear-screen=false lib/index.ts",
         "dev:cache": "cross-env NODE_ENV=production tsx watch --clear-screen=false lib/index.ts",
@@ -31,7 +31,7 @@
         "lint": "eslint --cache .",
         "prepare": "husky || true",
         "profiling": "cross-env NODE_ENV=production tsx --prof lib/index.ts",
-        "start": "wrangler dev",
+        "start": "cross-env NODE_ENV=production tsx lib/index.ts ",
         "deploy": "wrangler publish",
         "test": "npm run format:check && npm run vitest:coverage",
         "vitest": "cross-env NODE_ENV=test vitest",
